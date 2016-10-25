@@ -20,8 +20,8 @@ public class GridScript : MonoBehaviour {
 		public float grad_pos;
 	}
 
-	public static int width = 160;
-	public static int height = 90;
+	public static int width = 80;
+	public static int height = 45;
 
 	private static int COL_MAX = width - 1;
 	private static int ROW_MAX = height - 1;
@@ -41,7 +41,16 @@ public class GridScript : MonoBehaviour {
 
 	private Vector3 grid_diag;
 
+	private float color_offset;
 
+	private enum GRID_STATES {
+		ON,
+		OFF
+	};
+
+	private GRID_STATES grid_state = GRID_STATES.ON;
+
+	private int frames = 0;
 
 	// Use this  for initialization
 	// Any live cell with fewer than two live neighbours dies, as if caused by under-population.
@@ -60,9 +69,15 @@ public class GridScript : MonoBehaviour {
 
 		for(int row = 0; row < height; row++){
 			for(int col = 0; col < width; col++){
+				prev_cell_state[row, col].state = cells[row, col].is_alive;
+			}
+		}
+
+
+		for(int row = 0; row < height; row++){
+			for(int col = 0; col < width; col++){
 				neighbours = 0;
 				state = 0;
-
 				// Get the cardinal positions
 				if( row != 0 && col != 0 ) 				// SOUTH WEST
 					neighbours += prev_cell_state[row - 1, col - 1].state;
@@ -120,9 +135,19 @@ public class GridScript : MonoBehaviour {
 
 	void update_cell_colors()
 	{
+		float t_time = Time.deltaTime / 5.0f;
+		color_offset += t_time;
+
+		if(color_offset > 1.0f)
+			color_offset -= 1.0f;
+
 		for(int row = 0; row < height; row++){
 			for(int col = 0; col < width; col++){
-				cells[row,col].set_color(g.Evaluate(cell_state[row,col].grad_pos));
+				float t_offset = cell_state[row,col].grad_pos + color_offset;
+				if(t_offset > 1.0f)
+					t_offset -= 1.0f;
+
+				cells[row,col].set_color(g.Evaluate(t_offset));
 			}
 		}
 	}
@@ -144,14 +169,16 @@ public class GridScript : MonoBehaviour {
 
 		// Color keys
 		g = new Gradient();
-		gck = new GradientColorKey[3];
+		gck = new GradientColorKey[4];
 		gak = new GradientAlphaKey[2];
 		gck[0].color = Color.red;
 		gck[0].time = 0.0f;
 		gck[1].color = Color.green;
-		gck[1].time = 0.5f;
+		gck[1].time = 0.333333333333f;
 		gck[2].color = Color.blue;
-		gck[2].time = 1.0f;
+		gck[2].time = 0.666666666666f;
+		gck[3].color = Color.red;
+		gck[3].time = 1.0f;
 
 		// Alpha keys
 		gak[0].alpha = 1.0f;
@@ -175,7 +202,6 @@ public class GridScript : MonoBehaviour {
 				handles[x, y] = (GameObject)Instantiate(cell, new Vector3((y + 0.5f), (x + 0.5f), 0f), Quaternion.identity, parent_handle);
 				cells[x, y] = handles[x, y].GetComponent<CellScript>();
 				cells[x, y].init();
-				// cells[x, y] = (GameObject)Instantiate(cell, new Vector3(x, y, 0f), Quaternion.identity);
 				if(Random.Range(0, 2) == 0)
 					cells[x, y].set_dead();
 				else
@@ -197,12 +223,34 @@ public class GridScript : MonoBehaviour {
 			}
 		}
 
-		update_cell_colors();
+		// update_cell_colors();
+	}
+
+	void grid_state_toggle(){
+		grid_state = (grid_state == GRID_STATES.OFF) ? GRID_STATES.ON : GRID_STATES.OFF;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		update_grid();
-		// update_cell_colors();
+		if(Input.GetKeyDown(KeyCode.Space)){
+			grid_state_toggle();
+		}
+
+		switch (grid_state) 
+		{
+			case GRID_STATES.ON:
+				// HACKY!
+				frames++;
+				if(frames % 3 == 0)
+				{
+					update_grid();
+				}
+				update_cell_colors();
+				break;
+
+			case GRID_STATES.OFF:
+				break;
+		}
+		
 	}
 }

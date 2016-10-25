@@ -32,6 +32,10 @@ public class CellScript : MonoBehaviour {
 		set_dead();
 	}
 
+	void OnMouseDown(){
+		set_alive();
+	}
+
 	// Use this for initialization
 	void Start () {
 		
