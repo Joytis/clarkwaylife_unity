@@ -3,17 +3,42 @@ using System.Collections;
 
 public class CellScript : MonoBehaviour {
 
-	public bool is_alive;
+	public int is_alive;
 
-	private SpriteRenderer sprite;
+	public Sprite 			aliveTile;
+	public Sprite 			deadTile;
+
+	private SpriteRenderer 	srend;
+	private Transform 		trans;
+
+	public void set_alive(){
+		is_alive = 1;
+		srend.sprite = aliveTile;
+	}
+
+	public void set_dead(){
+		is_alive = 0;
+		srend.sprite = deadTile;
+	}
+
+	public void set_color(Color c){
+		srend.color = c;
+	}
+
+	public void init() {
+		srend = gameObject.GetComponent<SpriteRenderer>();
+		trans = gameObject.GetComponent<Transform>();
+
+		set_dead();
+	}
 
 	// Use this for initialization
 	void Start () {
-	
+		
 	}
 	
 	// Update is called once per frame
 	void Update () {
-	
+		
 	}
 }
