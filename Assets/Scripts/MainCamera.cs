@@ -38,7 +38,7 @@ public class MainCamera : MonoBehaviour {
 
 		// cam.orthographicSize = height;
 
-		transform.position += new Vector3(width/2f, height/2f, 0);
+		transform.position += new Vector3((width/2f), height/2f, 0);
 	}
 	
 	// Update is called once per frame

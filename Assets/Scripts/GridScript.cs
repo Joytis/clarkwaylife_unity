@@ -172,7 +172,7 @@ public class GridScript : MonoBehaviour {
 		for(int x = 0; x < height; x++){
 			for(int y = 0; y < width; y++){
 				// Set up the cells
-				handles[x, y] = (GameObject)Instantiate(cell, new Vector3((y + 6.5f), (x + 0.5f), 0f), Quaternion.identity, parent_handle);
+				handles[x, y] = (GameObject)Instantiate(cell, new Vector3((y + 0.5f), (x + 0.5f), 0f), Quaternion.identity, parent_handle);
 				cells[x, y] = handles[x, y].GetComponent<CellScript>();
 				cells[x, y].init();
 				// cells[x, y] = (GameObject)Instantiate(cell, new Vector3(x, y, 0f), Quaternion.identity);
