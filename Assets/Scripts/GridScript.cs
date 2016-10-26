@@ -20,28 +20,30 @@ public class GridScript : MonoBehaviour {
 		public float grad_pos;
 	}
 
-	public static int width = 80;
-	public static int height = 45;
+	public GameObject 			cell;
 
-	private static int COL_MAX = width - 1;
-	private static int ROW_MAX = height - 1;
+	public static int 			width = 80;
+	public static int 			height = 45;
+	public int 					frames_per_update = 5;
 
-	public GameObject cell;
+	private static int 			COL_MAX = width - 1;
+	private static int 			ROW_MAX = height - 1;
 
-	private Transform parent_handle;
-	private CellState[,] cell_state;
-	private CellState[,] prev_cell_state;
+	private Transform 			parent_handle;
+	private CellState[,] 		cell_state;
+	private CellState[,] 		prev_cell_state;
 
-	private CellScript[,] cells = new CellScript[height,width];
-	private GameObject[,] handles = new GameObject[height,width];
+	private CellScript[,] 		cells = new CellScript[height,width];
+	private GameObject[,] 		handles = new GameObject[height,width];
 
-	private Gradient g;
-	private GradientColorKey[] gck;
-	private GradientAlphaKey[] gak;
+	private Gradient 			g;
+	private GradientColorKey[] 	gck;
+	private GradientAlphaKey[] 	gak;
 
-	private Vector3 grid_diag;
 
-	private float color_offset;
+	private Vector3 			grid_diag;
+
+	private float 				color_offset;
 
 	private enum GRID_STATES {
 		ON,
@@ -51,6 +53,10 @@ public class GridScript : MonoBehaviour {
 	private GRID_STATES grid_state = GRID_STATES.ON;
 
 	private int frames = 0;
+
+
+	// UPDATE GRID
+	//===============================================================
 
 	// Use this  for initialization
 	// Any live cell with fewer than two live neighbours dies, as if caused by under-population.
@@ -133,6 +139,8 @@ public class GridScript : MonoBehaviour {
 		}
 	}
 
+	// UPDATE CELL COLORS
+	//===============================================================
 	void update_cell_colors()
 	{
 		float t_time = Time.deltaTime / 5.0f;
@@ -152,6 +160,8 @@ public class GridScript : MonoBehaviour {
 		}
 	}
 
+	// INITILIZATION AND START LOOP
+	//===============================================================
 	void Start () {
 		//	Collapses them in the view nicely
 		parent_handle = new GameObject("BoardHolder").transform;
@@ -226,22 +236,51 @@ public class GridScript : MonoBehaviour {
 		// update_cell_colors();
 	}
 
+	// GRID STATE TOGGLE
+	//===============================================================
 	void grid_state_toggle(){
 		grid_state = (grid_state == GRID_STATES.OFF) ? GRID_STATES.ON : GRID_STATES.OFF;
 	}
 	
+
+	// UPDATE FUNCTION
+	//===============================================================
+
 	// Update is called once per frame
 	void Update () {
+
+		// CHECKING INPU TMETHODS.
 		if(Input.GetKeyDown(KeyCode.Space)){
 			grid_state_toggle();
 		}
 
+		if(Input.GetKeyDown(KeyCode.Escape)){
+			Application.Quit();
+		}
+
+		if(Input.GetKeyDown(KeyCode.RightArrow)){
+			frames_per_update++;
+			if(frames_per_update > 60){
+				frames_per_update = 60; 
+				frames = 0;
+			}
+		}
+
+		if(Input.GetKeyDown(KeyCode.LeftArrow)){
+			frames_per_update--;
+			if(frames_per_update < 1){
+				frames_per_update = 1;
+				frames = 0;
+			}
+		}
+
+		// STATES :D
 		switch (grid_state) 
 		{
 			case GRID_STATES.ON:
 				// HACKY!
 				frames++;
-				if(frames % 3 == 0)
+				if(frames % frames_per_update == 0)
 				{
 					update_grid();
 				}

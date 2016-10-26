@@ -3,7 +3,7 @@ using System.Collections;
 
 public class CellScript : MonoBehaviour {
 
-	public int is_alive;
+	public int 				is_alive;
 
 	public Sprite 			aliveTile;
 	public Sprite 			deadTile;
