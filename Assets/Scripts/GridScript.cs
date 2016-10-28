@@ -22,8 +22,8 @@ public class GridScript : MonoBehaviour {
 
 	public GameObject 			cell;
 
-	public static int 			width = 80;
-	public static int 			height = 45;
+	public static int 			width = 96;
+	public static int 			height = 54;
 	public int 					frames_per_update = 5;
 
 	private static int 			COL_MAX = width - 1;

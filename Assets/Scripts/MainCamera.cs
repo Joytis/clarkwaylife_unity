@@ -9,7 +9,7 @@ public class MainCamera : MonoBehaviour {
 	float height;
 	float width;
 
-	public float orsize;
+	// public float orsize;
 	public float aspect = 1.7777777777f;
 
 	void Awake() {
@@ -26,7 +26,7 @@ public class MainCamera : MonoBehaviour {
 	void Start () {
 	    cam = Camera.main;
 
-	    cam.orthographicSize = orsize;
+	    float orsize = cam.orthographicSize;
 
 	    cam.projectionMatrix = Matrix4x4.Ortho(
 	             -orsize * aspect, orsize * aspect,

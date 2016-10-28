@@ -35,14 +35,4 @@ public class CellScript : MonoBehaviour {
 	void OnMouseDown(){
 		set_alive();
 	}
-
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 }
