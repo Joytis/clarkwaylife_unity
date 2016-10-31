@@ -9,7 +9,7 @@ public class CellScript : MonoBehaviour {
 	public Sprite 			deadTile;
 
 	private SpriteRenderer 	srend;
-	private Transform 		trans;
+	// private Transform 		trans;
 
 	public void set_alive(){
 		is_alive = 1;
@@ -27,7 +27,7 @@ public class CellScript : MonoBehaviour {
 
 	public void init() {
 		srend = gameObject.GetComponent<SpriteRenderer>();
-		trans = gameObject.GetComponent<Transform>();
+		// trans = gameObject.GetComponent<Transform>();
 
 		set_dead();
 	}
