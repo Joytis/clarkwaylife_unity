@@ -103,17 +103,12 @@ public class Grid : MonoBehaviour {
 	}
 
 	void OnMouseDown(){
-		Debug.Log("Cool dudes B)");
 
 		// Get the mouse position.
 		// Then, translate onto the conway data structure. 
-
 		Vector3 pos = Input.mousePosition;
 		int col = (int)((float)pos.x / ppc);
 		int row = (int)((float)pos.y / ppr);
-		Debug.Log(pos);
-		Debug.Log("Col: " +col);
-		Debug.Log("Row: " +row);
 
 		c.turn_on_cell(row, col);
 	}
