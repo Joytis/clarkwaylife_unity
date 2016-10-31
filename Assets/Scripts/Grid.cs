@@ -98,6 +98,10 @@ public class Grid : MonoBehaviour {
 			Application.Quit();
 		}
 
+		if(Input.GetKeyDown(KeyCode.P)) {
+			Application.LoadLevel(2); 
+		}
+
 		update_texture();
 
 	}
@@ -112,5 +116,5 @@ public class Grid : MonoBehaviour {
 
 		c.turn_on_cell(row, col);
 	}
-
+ 
 }
