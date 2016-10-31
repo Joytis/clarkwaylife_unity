@@ -155,11 +155,15 @@ public class ConwayArray : MonoBehaviour {
 	}
 
 
+	public void turn_on_cell(int row, int col) {
+		cell_state[row,col].state = 1;
+	}
+
 	// private GradientColorKey[] 	gck;
 	// private GradientAlphaKey[] 	gak;
 
 	// Use this for initialization
-	void Start () {
+	void Awake () {
 
 		// Initialize the lists. 
 		COL_MAX = width - 1;
