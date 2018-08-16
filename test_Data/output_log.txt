@@ -27,50 +27,16 @@ Add a delegate to SceneManager.sceneLoaded instead to get notifications after sc
 <RI> Input initialized.
 desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
 <RI> Initialized touch support.
-UnloadTime: 0.661204 ms
+UnloadTime: 0.607809 ms
 Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 3.681592 ms
+UnloadTime: 3.675982 ms
 RGBA(0.000, 0.953, 0.043, 1.000)
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
 
 
 Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 185.
-Total: 0.618282 ms (FindLiveObjects: 0.025293 ms CreateObjectMapping: 0.006131 ms MarkObjects: 0.570506 ms  DeleteObjects: 0.015584 ms)
-
-(35.6, 20.0)
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
-
-True
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
-
-(0.0, 0.0, 0.0)
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
-
-Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 0.205668 ms
-
-Unloading 2 unused Assets to reduce memory usage. Loaded Objects now: 228.
-Total: 0.183951 ms (FindLiveObjects: 0.011241 ms CreateObjectMapping: 0.008431 ms MarkObjects: 0.157892 ms  DeleteObjects: 0.005876 ms)
-
-Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 0.241181 ms
-
-Unloading 1 unused Assets to reduce memory usage. Loaded Objects now: 228.
-Total: 0.169133 ms (FindLiveObjects: 0.011752 ms CreateObjectMapping: 0.005109 ms MarkObjects: 0.148694 ms  DeleteObjects: 0.003065 ms)
-
-Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 0.287169 ms
-RGBA(0.000, 0.953, 0.043, 1.000)
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
-
-
-Unloading 3 unused Assets to reduce memory usage. Loaded Objects now: 214.
-Total: 0.541891 ms (FindLiveObjects: 0.018139 ms CreateObjectMapping: 0.007153 ms MarkObjects: 0.509189 ms  DeleteObjects: 0.006387 ms)
+Total: 0.632847 ms (FindLiveObjects: 0.025548 ms CreateObjectMapping: 0.007664 ms MarkObjects: 0.583282 ms  DeleteObjects: 0.015584 ms)
 
 (35.6, 20.0)
  
@@ -85,5 +51,5 @@ True
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
 
 Setting up 2 worker threads for Enlighten.
-  Thread -> id: ac8 -> priority: 1 
-  Thread -> id: 261c -> priority: 1 
+  Thread -> id: 1bd0 -> priority: 1 
+  Thread -> id: 1ed4 -> priority: 1 
